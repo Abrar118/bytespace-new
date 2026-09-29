@@ -1,5 +1,6 @@
 import { ShoppingBag } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { MobileNavigation, type NavigationItem } from "./mobile-navigation";
 
 const navigationItems = [
@@ -38,8 +39,12 @@ export function Header() {
       </nav>
 
       <div className="hidden items-center gap-7 text-[15px] font-medium md:flex">
-        <span>Sign In</span>
-        <span>Join Us</span>
+        <Link className="transition-opacity hover:opacity-70" href="/login">
+          Sign In
+        </Link>
+        <Link className="transition-opacity hover:opacity-70" href="/signup">
+          Join Us
+        </Link>
         <ShoppingBag aria-hidden size={19} strokeWidth={1.8} />
       </div>
 

@@ -27,17 +27,28 @@ export function LearningProgressCard({ className }: { className: string }) {
   );
 }
 
-export function HappyStudentsCard({ className }: { className: string }) {
+// `lime` is the auth-page variant: lime card, blue star, dark count chip.
+export function HappyStudentsCard({
+  className,
+  lime = false,
+}: {
+  className: string;
+  lime?: boolean;
+}) {
   return (
     <div
-      className={`absolute flex w-[258px] flex-col rounded-2xl bg-white p-4 text-ink shadow-xl ${className}`}
+      className={`absolute flex w-[258px] flex-col rounded-2xl p-4 text-ink ${lime ? "bg-brand-lime" : "bg-white shadow-xl"} ${className}`}
     >
       <p className="text-base font-medium">Happy Students</p>
       <div className="mt-1 flex items-center gap-1 text-xs text-muted">
         <span>4.5 (240)</span>
         <Star
           aria-hidden
-          className="fill-brand-lime text-brand-lime"
+          className={
+            lime
+              ? "fill-brand-blue text-brand-blue"
+              : "fill-brand-lime text-brand-lime"
+          }
           size={14}
         />
       </div>
@@ -52,7 +63,9 @@ export function HappyStudentsCard({ className }: { className: string }) {
             className="-mr-4 size-[43px] rounded-full border-2 border-white object-cover"
           />
         ))}
-        <span className="grid size-[43px] place-items-center rounded-full bg-brand-lime text-xs font-bold">
+        <span
+          className={`grid size-[43px] place-items-center rounded-full text-xs font-bold ${lime ? "bg-ink text-white" : "bg-brand-lime"}`}
+        >
           2K+
         </span>
       </div>
