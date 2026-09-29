@@ -48,3 +48,32 @@ export function Decorations({
     </div>
   );
 }
+
+export type Glow = {
+  x: number;
+  y: number;
+  r: number;
+  rgb: string;
+  alpha: number;
+};
+
+/** Soft radial glows from Home.svg: centre (x, y) in frame px, radius, colour and layer opacity. */
+export function Glows({ items }: { items: readonly Glow[] }) {
+  return (
+    <div aria-hidden className="pointer-events-none absolute inset-0">
+      {items.map(({ x, y, r, rgb, alpha }) => (
+        <div
+          key={`${x}-${y}`}
+          className="absolute rounded-full"
+          style={{
+            left: fromFrame(x - r),
+            top: y - r,
+            width: r * 2,
+            height: r * 2,
+            background: `radial-gradient(closest-side, rgb(${rgb} / ${alpha}), rgb(${rgb} / ${alpha * 0.23}) 53%, rgb(${rgb} / ${alpha * 0.06}) 75%, transparent)`,
+          }}
+        />
+      ))}
+    </div>
+  );
+}

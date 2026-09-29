@@ -2,11 +2,11 @@ import { CircleCheck } from "lucide-react";
 import Image from "next/image";
 import { courses } from "@/data/courses";
 import { CourseCard } from "./course-card";
+import { type Glow, Glows } from "./decorations";
 import { HappyStudentsCard, LearningProgressCard } from "./stat-cards";
 
-// Radial glows from Home.svg: centre (x, y) in the 1440px frame, relative to
-// the section top (page y 3120), radius, colour and layer opacity.
-const glows = [
+// Relative to the section top (page y 3120).
+const glows: Glow[] = [
   { x: 1290.5, y: 1356.5, r: 568.5, rgb: "0 59 226", alpha: 0.24 },
   { x: 416.5, y: 102.5, r: 568.5, rgb: "203 252 1", alpha: 0.4 },
   { x: 60.5, y: 751.5, r: 568.5, rgb: "0 59 226", alpha: 0.16 },
@@ -55,21 +55,7 @@ function RevenueCard({
 export function FeatureHighlights() {
   return (
     <section className="relative overflow-hidden bg-[#fafafa] px-5 md:px-8">
-      <div aria-hidden className="pointer-events-none absolute inset-0">
-        {glows.map(({ x, y, r, rgb, alpha }) => (
-          <div
-            key={`${x}-${y}`}
-            className="absolute rounded-full"
-            style={{
-              left: `calc(50% - 720px + ${x - r}px)`,
-              top: y - r,
-              width: r * 2,
-              height: r * 2,
-              background: `radial-gradient(closest-side, rgb(${rgb} / ${alpha}), rgb(${rgb} / ${alpha * 0.23}) 53%, rgb(${rgb} / ${alpha * 0.06}) 75%, transparent)`,
-            }}
-          />
-        ))}
-      </div>
+      <Glows items={glows} />
 
       <div className="relative mx-auto max-w-[1200px]">
         {/* Stage coordinates are Figma px relative to each stage's origin. */}

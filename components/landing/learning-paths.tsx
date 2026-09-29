@@ -2,7 +2,7 @@ import { learningPaths } from "@/data/landing";
 
 export function LearningPaths() {
   return (
-    <section className="px-5 pt-[72px] pb-[120px] md:px-8">
+    <section className="px-5 pt-[72px] pb-[121px] md:px-8">
       <div className="mx-auto max-w-[1200px] text-center">
         <h2 className="font-heading text-[28px] font-semibold leading-[1.2] tracking-[-0.01em] text-ink md:text-[36px]">
           Explore Diverse Learning Paths at Bytespace

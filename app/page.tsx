@@ -5,6 +5,7 @@ import { Header } from "@/components/landing/header";
 import { Hero } from "@/components/landing/hero";
 import { LearningPaths } from "@/components/landing/learning-paths";
 import { PartnerStrip } from "@/components/landing/partner-strip";
+import { Testimonials } from "@/components/landing/testimonials";
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
       <LearningPaths />
       <FeatureHighlights />
       <CreatorCta />
+      <Testimonials />
     </main>
   );
 }
