@@ -29,10 +29,8 @@ Define these Tailwind 4 `@theme` colour tokens:
 - Secondary lime used by large decoration: `#CBFC01`
 - Heading: `#242528`
 - Body: `#4B4C53`
-- Secondary body: `#4F4F4F`
 - Muted: `#82868E`
 - Surface: `#F5F5F6`
-- Subtle surface: `#F6F6F6`
 - Border: `#CED0D3`
 
 Use the exact Figma type scale where available: Heading L is Poppins 72px/120% semibold; Body L is Satoshi 18px/160% regular. Responsive sizes may step down while preserving the hierarchy.
@@ -40,10 +38,11 @@ Use the exact Figma type scale where available: Heading L is Poppins 72px/120% s
 ## Asset Strategy
 
 - Treat `Home.svg` as the source for exact desktop measurements, positions, colours, and shadows. Use `Home.png` only for visual comparison.
-- Move full-page `Home`, `Login`, `Register`, and `404 Not Found` PNG/SVG references from `public/` to `docs/design/` so Vercel does not serve them.
+- Move full-page `Home`, `Login`, `Register`, and `404 Not Found` PNG/SVG references from `public/` to a gitignored `docs/design/` directory so they neither ship to Vercel nor inflate the public repository. Keep a tracked `docs/design/README.md` linking to the Figma source.
 - Rename runtime files to kebab-case before use.
 - Map the hero exports as follows:
-  - `person 2.png` → `hero-student.png`, the central student image.
+  - `person 2.png` → `student-male.png`, used in the hero and Your Path sections.
+  - `person 1.png` → `student-female.png`, used in the Create & Manage section.
   - `Ellipse 7.png` → `hero-lime-arch.png`, behind the student.
   - `Mask Group.png` → `lime-squiggle.png`, the large lime squiggle.
   - `Mask Group (1).png` → `white-squiggle-small.png`.
@@ -55,7 +54,13 @@ Use the exact Figma type scale where available: Heading L is Poppins 72px/120% s
 - Draw the simple torus and partner-logo placeholders with CSS or small inline SVGs instead of adding more image files.
 - Use Lucide for category, star, check, lock, search, and menu icons.
 - Extract testimonial and stacked-avatar raster images embedded in `Home.svg` into descriptive runtime files only when those sections are implemented.
-- Rename course images by content: `course-figma.jpg`, `course-digital-assets.jpg`, `course-big-data.jpg`, `course-productivity.jpg`, `course-money-management.jpg`, and `course-startup.jpg`.
+- Rename course images by content:
+  - `image 1.jpg` → `course-big-data.jpg`.
+  - `image 2.jpg` → `course-productivity.jpg`.
+  - `image 3.jpg` → `course-figma.jpg`.
+  - `image 4.jpg` → `course-startup.jpg`.
+  - `image 5.jpg` → `course-money-management.jpg`.
+  - `image 6.jpg` → `course-digital-assets.jpg`.
 
 ## Architecture
 
@@ -69,9 +74,9 @@ Use the exact Figma type scale where available: Heading L is Poppins 72px/120% s
 
 Recreate the header, navigation, hero heading, supporting copy, search treatment, decorative shapes, main character composition, floating information cards, and partner-logo strip. Desktop should match the 1440px reference; mobile should preserve hierarchy without horizontal overflow.
 
-At 375px, show the wordmark and an accessible menu toggle. Opening it reveals the primary navigation and account actions in a stacked panel; the toggle exposes `aria-expanded`. Sign In and Join Us remain visually present but non-interactive until `/login` and `/signup` exist, avoiding broken routes.
+The header is static. At 375px, show the wordmark and an accessible menu toggle. Opening it reveals the primary navigation and account actions in a stacked panel; the toggle exposes `aria-expanded`. Render Sign In and Join Us as styled plain text until `/login` and `/signup` exist; replace them with `Link` components if the auth bonus is implemented.
 
-The search form has a visible or screen-reader-only label. Its small client boundary prevents submission because search is outside scope; it stores or transmits nothing.
+The search form has `role="search"`, a visible or screen-reader-only label, and submits a harmless GET request to `/?q=…`. No client component or state is needed.
 
 ## Phase 2: Discover
 
