@@ -3,7 +3,7 @@ import { CourseCard } from "./course-card";
 
 export function Discover() {
   return (
-    <section id="courses" className="px-5 pt-[73px] pb-[70px] md:px-8">
+    <section id="courses" className="px-5 pt-[73px] md:px-8">
       <div className="mx-auto max-w-[1200px] text-center">
         <h2 className="font-heading text-[32px] font-semibold leading-[1.2] tracking-[-0.01em] text-ink md:text-[44px]">
           Discover Your Passion,
