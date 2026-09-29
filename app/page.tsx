@@ -1,3 +1,4 @@
+import { Discover } from "@/components/landing/discover";
 import { Header } from "@/components/landing/header";
 import { Hero } from "@/components/landing/hero";
 import { PartnerStrip } from "@/components/landing/partner-strip";
@@ -10,6 +11,7 @@ export default function Home() {
         <Hero />
       </div>
       <PartnerStrip />
+      <Discover />
     </main>
   );
 }
