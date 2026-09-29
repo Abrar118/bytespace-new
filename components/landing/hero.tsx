@@ -70,7 +70,7 @@ function HappyStudentsCard() {
 
 export function Hero() {
   return (
-    <section id="home" className="relative mx-auto h-[920px] max-w-[1440px]">
+    <section id="home" className="relative h-[920px] w-full">
       <div className="relative z-20 mx-auto flex max-w-[920px] flex-col items-center px-5 pt-[70px] text-center max-md:pt-9">
         <h1 className="font-heading text-[44px] font-semibold leading-[1.15] tracking-[-0.01em] md:text-[72px] md:leading-[1.2]">
           Get Access to Hundreds
@@ -145,11 +145,11 @@ export function Hero() {
         <Image
           src="/assets/white-squiggle-large.png"
           alt=""
-          width={175}
-          height={184}
-          className="absolute -right-1 bottom-[28px] h-auto w-[175px] rotate-12 max-md:hidden"
+          width={1265}
+          height={1327}
+          className="absolute right-[-16px] bottom-[20px] h-[332px] w-[332px] max-md:hidden"
         />
-        <div className="absolute bottom-[32px] left-[55px] size-[170px] -rotate-12 rounded-full border-[44px] border-white max-md:hidden" />
+        <div className="absolute bottom-[120px] left-[55px] h-[170px] w-[210px] -rotate-[28deg] rounded-[50%] border-[44px] border-white max-md:hidden" />
       </div>
 
       <Image
@@ -157,16 +157,16 @@ export function Hero() {
         alt=""
         width={4596}
         height={1768}
-        className="absolute bottom-[-14px] left-1/2 z-0 h-auto w-[1080px] -translate-x-1/2 max-md:bottom-0 max-md:w-[700px]"
+        className="absolute bottom-0 left-1/2 z-0 h-auto w-[1150px] -translate-x-1/2 max-md:w-[700px]"
         aria-hidden
         loading="eager"
       />
       <Image
         src="/assets/student-male.png"
         alt="Student learning online with a laptop and headphones"
-        width={578}
-        height={541}
-        className="absolute bottom-[-29px] left-1/2 z-20 h-[541px] w-[578px] -translate-x-1/2 max-md:bottom-[-4px] max-md:h-[330px] max-md:w-[430px]"
+        width={2888}
+        height={2060}
+        className="absolute bottom-[-29px] left-1/2 z-20 h-auto w-[759px] -translate-x-1/2 max-md:bottom-[-4px] max-md:w-[430px]"
         priority
       />
 
