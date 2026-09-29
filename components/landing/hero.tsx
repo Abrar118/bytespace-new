@@ -7,9 +7,67 @@ const avatarPaths = Array.from(
     `/assets/avatars/hero-avatar-${String(index + 1).padStart(2, "0")}.png`,
 );
 
+// Positions are Figma px inside the 1440px hero frame, minus the 104px header.
+// Exports are 4x renders with rotation baked in, so only width is needed.
+// The two lime shapes are cropped at the frame edge in Figma, so on wider
+// screens they stick to the viewport edge instead of the frame.
+const frameLeft = "calc(50% - 720px)";
+const edge = `min(0px, ${frameLeft})`;
+
+const decorations = [
+  {
+    src: "/assets/lime-squiggle.png",
+    w: 1061,
+    h: 1548,
+    left: edge,
+    top: 117,
+    width: 265,
+  },
+  {
+    src: "/assets/white-squiggle-small.png",
+    w: 704,
+    h: 704,
+    left: `calc(${frameLeft} + 184px)`,
+    top: 373,
+    width: 176,
+  },
+  {
+    src: "/assets/white-torus.png",
+    w: 688,
+    h: 688,
+    left: `calc(${frameLeft} + 14px)`,
+    top: 577,
+    width: 344,
+  },
+  {
+    src: "/assets/lime-capsule.png",
+    w: 852,
+    h: 1488,
+    right: edge,
+    top: 116,
+    width: 213,
+  },
+  {
+    src: "/assets/white-cone.png",
+    w: 760,
+    h: 756,
+    left: `calc(${frameLeft} + 1104px)`,
+    top: 360,
+    width: 190,
+  },
+  {
+    src: "/assets/white-squiggle-large.png",
+    w: 1265,
+    h: 1327,
+    left: `calc(${frameLeft} + 1124px)`,
+    top: 568,
+    width: 316,
+  },
+];
+
 function LearningProgressCard() {
   return (
-    <div className="absolute right-[calc(50%_-_354px)] bottom-[242px] z-30 h-[131px] w-[232px] rounded-2xl bg-white p-4 text-ink shadow-xl max-md:right-[-18px] max-md:bottom-[205px] max-md:scale-[0.72]">
+    <div className="absolute top-[141px] left-[697px] h-[131px] w-[232px] rounded-2xl bg-white p-4 text-ink shadow-xl">
       <p className="text-sm font-medium">Learning Progress</p>
       <p className="mt-2 font-heading text-[44px] font-semibold leading-none">
         55%
@@ -23,25 +81,18 @@ function LearningProgressCard() {
 
 function CourseCard() {
   return (
-    <div className="absolute bottom-[315px] left-[calc(50%_-_316px)] z-30 flex h-[70px] w-[208px] items-center gap-3 rounded-2xl bg-white px-4 text-ink shadow-xl max-md:bottom-[230px] max-md:left-[-28px] max-md:scale-[0.72]">
-      <div className="grid size-10 shrink-0 place-items-center rounded-full bg-brand-lime">
-        <span className="font-heading text-sm font-bold">UX</span>
-      </div>
-      <div>
-        <p className="text-sm font-semibold">UI/UX Design</p>
-        <p className="mt-1 text-[10px] text-muted">
-          200 Courses · 1000+ Students
-        </p>
-      </div>
+    <div className="absolute top-[129px] left-[259px] flex h-[70px] w-[208px] flex-col justify-center rounded-2xl bg-white px-4 text-ink shadow-xl">
+      <p className="text-base font-medium">UI/UX Design</p>
+      <p className="mt-1 text-xs text-muted">200 Courses • 1000+ Students</p>
     </div>
   );
 }
 
 function HappyStudentsCard() {
   return (
-    <div className="absolute bottom-[66px] left-[calc(50%_-_392px)] z-30 h-[121px] w-[258px] rounded-2xl bg-white px-4 py-4 text-ink shadow-xl max-md:bottom-[38px] max-md:left-[-28px] max-md:scale-[0.7]">
+    <div className="absolute top-[327px] left-[183px] h-[121px] w-[258px] rounded-2xl bg-white p-4 text-ink shadow-xl">
       <p className="text-base font-medium">Happy Students</p>
-      <div className="mt-1 flex items-center gap-2 text-xs text-muted">
+      <div className="mt-1 flex items-center gap-1 text-xs text-muted">
         <span>4.5 (240)</span>
         <Star
           aria-hidden
@@ -70,8 +121,8 @@ function HappyStudentsCard() {
 
 export function Hero() {
   return (
-    <section id="home" className="relative h-[920px] w-full">
-      <div className="relative z-20 mx-auto flex max-w-[920px] flex-col items-center px-5 pt-[70px] text-center max-md:pt-9">
+    <section id="home" className="relative lg:h-[920px]">
+      <div className="relative z-20 mx-auto flex max-w-[920px] flex-col items-center px-5 pt-9 text-center md:pt-[70px]">
         <h1 className="font-heading text-[44px] font-semibold leading-[1.15] tracking-[-0.01em] md:text-[72px] md:leading-[1.2]">
           Get Access to Hundreds
           <br className="hidden md:block" /> Courses Available
@@ -101,78 +152,56 @@ export function Hero() {
               name="q"
               type="search"
               placeholder="Course, topic, creator"
-              className="h-[46px] w-full rounded-full border-0 bg-white pl-12 pr-5 text-sm text-ink placeholder:text-muted focus:outline-none"
+              className="h-[52px] w-full rounded-full border-0 bg-white pl-12 pr-5 text-sm text-ink placeholder:text-muted focus:outline-none"
             />
           </div>
           <button
             type="submit"
-            className="h-[46px] shrink-0 rounded-full bg-brand-lime px-7 font-semibold text-ink transition-transform hover:scale-105"
+            className="h-[46px] w-[104px] shrink-0 rounded-full bg-brand-lime font-semibold text-ink transition-transform hover:scale-105"
           >
             Search
           </button>
         </form>
       </div>
 
-      <div aria-hidden className="pointer-events-none absolute inset-0">
-        <Image
-          src="/assets/lime-squiggle.png"
-          alt=""
-          width={170}
-          height={248}
-          className="absolute -left-5 top-[145px] h-auto w-[170px] -rotate-[20deg] max-md:hidden"
-        />
-        <Image
-          src="/assets/white-squiggle-small.png"
-          alt=""
-          width={104}
-          height={104}
-          className="absolute left-[220px] top-[390px] h-auto w-[104px] max-md:left-[-24px] max-md:top-[520px] max-md:w-20"
-        />
-        <Image
-          src="/assets/lime-capsule.png"
-          alt=""
-          width={852}
-          height={1488}
-          className="absolute -right-7 top-[135px] h-auto w-[180px] rotate-[30deg] max-md:right-[-46px] max-md:top-[335px] max-md:w-24"
-        />
-        <Image
-          src="/assets/white-cone.png"
-          alt=""
-          width={760}
-          height={756}
-          className="absolute right-[175px] top-[365px] h-auto w-[104px] -rotate-12 max-md:hidden"
-        />
-        <Image
-          src="/assets/white-squiggle-large.png"
-          alt=""
-          width={1265}
-          height={1327}
-          className="absolute right-[-16px] bottom-[20px] h-[332px] w-[332px] max-md:hidden"
-        />
-        <div className="absolute bottom-[120px] left-[55px] h-[170px] w-[210px] -rotate-[28deg] rounded-[50%] border-[44px] border-white max-md:hidden" />
+      {/* Stage = Figma x 145–1295, y 510–1024. Zoom shrinks it as a unit below lg. */}
+      {/* ponytail: zoom makes card text small on phones; give mobile its own card layout if a mobile design arrives */}
+      <div className="mt-10 flex justify-center lg:absolute lg:inset-x-0 lg:bottom-0 lg:mt-0">
+        <div className="relative h-[514px] w-[1150px] shrink-0 overflow-hidden [zoom:0.46] md:[zoom:0.8] lg:[zoom:1]">
+          <div
+            aria-hidden
+            className="absolute top-[72px] left-0 size-[1149px] rounded-full border-[320px] border-brand-lime-bright"
+          />
+          <Image
+            src="/assets/student-male.png"
+            alt="Student learning online with a laptop and headphones"
+            width={2888}
+            height={2060}
+            className="absolute top-0 left-[265px] h-auto w-[722px] max-w-none"
+            priority
+          />
+          <CourseCard />
+          <LearningProgressCard />
+          <HappyStudentsCard />
+        </div>
       </div>
 
-      <Image
-        src="/assets/hero-lime-arch.png"
-        alt=""
-        width={4596}
-        height={1768}
-        className="absolute bottom-0 left-1/2 z-0 h-auto w-[1150px] -translate-x-1/2 max-md:w-[700px]"
+      <div
         aria-hidden
-        loading="eager"
-      />
-      <Image
-        src="/assets/student-male.png"
-        alt="Student learning online with a laptop and headphones"
-        width={2888}
-        height={2060}
-        className="absolute bottom-[-29px] left-1/2 z-20 h-auto w-[759px] -translate-x-1/2 max-md:bottom-[-4px] max-md:w-[430px]"
-        priority
-      />
-
-      <CourseCard />
-      <LearningProgressCard />
-      <HappyStudentsCard />
+        className="pointer-events-none absolute inset-x-0 top-0 hidden h-[920px] overflow-hidden lg:block"
+      >
+        {decorations.map(({ src, w, h, ...position }) => (
+          <Image
+            key={src}
+            src={src}
+            alt=""
+            width={w}
+            height={h}
+            className="absolute h-auto max-w-none"
+            style={position}
+          />
+        ))}
+      </div>
     </section>
   );
 }

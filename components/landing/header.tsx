@@ -1,4 +1,4 @@
-import { LockKeyhole } from "lucide-react";
+import { ShoppingBag } from "lucide-react";
 import Image from "next/image";
 import { MobileNavigation, type NavigationItem } from "./mobile-navigation";
 
@@ -40,7 +40,7 @@ export function Header() {
       <div className="hidden items-center gap-7 text-[15px] font-medium md:flex">
         <span>Sign In</span>
         <span>Join Us</span>
-        <LockKeyhole aria-hidden size={19} strokeWidth={1.8} />
+        <ShoppingBag aria-hidden size={19} strokeWidth={1.8} />
       </div>
 
       <MobileNavigation items={navigationItems} />
