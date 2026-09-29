@@ -1,3 +1,4 @@
+import { CreatorCta } from "@/components/landing/creator-cta";
 import { Discover } from "@/components/landing/discover";
 import { FeatureHighlights } from "@/components/landing/feature-highlights";
 import { Header } from "@/components/landing/header";
@@ -8,7 +9,7 @@ import { PartnerStrip } from "@/components/landing/partner-strip";
 export default function Home() {
   return (
     <main>
-      <div className="hero-grid overflow-hidden text-white">
+      <div className="grid-backdrop overflow-hidden text-white">
         <Header />
         <Hero />
       </div>
@@ -16,6 +17,7 @@ export default function Home() {
       <Discover />
       <LearningPaths />
       <FeatureHighlights />
+      <CreatorCta />
     </main>
   );
 }

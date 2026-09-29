@@ -1,20 +1,21 @@
 import { Search } from "lucide-react";
 import Image from "next/image";
+import {
+  type Decoration,
+  Decorations,
+  fromEdge,
+  fromFrame,
+} from "./decorations";
 import { HappyStudentsCard, LearningProgressCard } from "./stat-cards";
 
-// Positions are Figma px inside the 1440px hero frame, minus the 104px header.
-// Exports are 4x renders with rotation baked in, so only width is needed.
-// The two lime shapes are cropped at the frame edge in Figma, so on wider
-// screens they stick to the viewport edge instead of the frame.
-const frameLeft = "calc(50% - 720px)";
-const edge = `min(0px, ${frameLeft})`;
-
-const decorations = [
+// Figma px in the hero frame, minus the 104px header. Exports are 4x renders
+// with rotation baked in, so only width is needed.
+const decorations: Decoration[] = [
   {
     src: "/assets/lime-squiggle.png",
     w: 1061,
     h: 1548,
-    left: edge,
+    left: fromEdge(0),
     top: 117,
     width: 265,
   },
@@ -22,7 +23,7 @@ const decorations = [
     src: "/assets/white-squiggle-small.png",
     w: 704,
     h: 704,
-    left: `calc(${frameLeft} + 184px)`,
+    left: fromFrame(184),
     top: 373,
     width: 176,
   },
@@ -30,7 +31,7 @@ const decorations = [
     src: "/assets/white-torus.png",
     w: 688,
     h: 688,
-    left: `calc(${frameLeft} + 14px)`,
+    left: fromFrame(14),
     top: 577,
     width: 344,
   },
@@ -38,7 +39,7 @@ const decorations = [
     src: "/assets/lime-capsule.png",
     w: 852,
     h: 1488,
-    right: edge,
+    right: fromEdge(0),
     top: 116,
     width: 213,
   },
@@ -46,7 +47,7 @@ const decorations = [
     src: "/assets/white-cone.png",
     w: 760,
     h: 756,
-    left: `calc(${frameLeft} + 1104px)`,
+    left: fromFrame(1104),
     top: 360,
     width: 190,
   },
@@ -54,7 +55,7 @@ const decorations = [
     src: "/assets/white-squiggle-large.png",
     w: 1265,
     h: 1327,
-    left: `calc(${frameLeft} + 1124px)`,
+    left: fromFrame(1124),
     top: 568,
     width: 316,
   },
@@ -136,22 +137,7 @@ export function Hero() {
         </div>
       </div>
 
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-0 hidden h-[920px] overflow-hidden lg:block"
-      >
-        {decorations.map(({ src, w, h, ...position }) => (
-          <Image
-            key={src}
-            src={src}
-            alt=""
-            width={w}
-            height={h}
-            className="absolute h-auto max-w-none"
-            style={position}
-          />
-        ))}
-      </div>
+      <Decorations items={decorations} className="h-[920px]" />
     </section>
   );
 }
