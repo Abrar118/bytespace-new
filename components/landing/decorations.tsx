@@ -41,6 +41,7 @@ export function Decorations({
           alt=""
           width={w}
           height={h}
+          sizes={`${position.width}px`}
           className="absolute h-auto max-w-none"
           style={position as CSSProperties}
         />

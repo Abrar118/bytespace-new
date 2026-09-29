@@ -95,6 +95,7 @@ export function FeatureHighlights() {
                 width={2812}
                 height={2752}
                 className="absolute top-[9.5px] left-[-0.5px] h-auto w-[703px] max-w-none"
+                sizes="703px"
               />
               <LearningProgressCard className="top-[213px] left-[366px] h-[138px]" />
               <Image
@@ -103,6 +104,7 @@ export function FeatureHighlights() {
                 width={496}
                 height={650}
                 className="absolute top-[92px] left-[472px] h-auto w-[124px] max-w-none"
+                sizes="124px"
               />
             </div>
           </div>
@@ -164,6 +166,7 @@ export function FeatureHighlights() {
                 width={2316}
                 height={2876}
                 className="absolute top-0 left-[7px] h-auto w-[579px] max-w-none"
+                sizes="579px"
               />
               <HappyStudentsCard className="top-[417px] left-[283px] h-[123px]" />
               <Image
@@ -172,6 +175,7 @@ export function FeatureHighlights() {
                 width={563}
                 height={598}
                 className="absolute top-[154px] left-[339px] h-auto w-[141px] max-w-none"
+                sizes="141px"
               />
             </div>
           </div>
