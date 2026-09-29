@@ -13,6 +13,7 @@
 ## Global Constraints
 
 - Match `Home.svg` geometry and `Home.png` appearance at 1440px; provide a deliberate 375px layout.
+- Transcribe visible copy from `Home.png`; `Home.svg` contains outlined paths, not readable text nodes.
 - Use Poppins for headings and Satoshi for body text and labels.
 - Keep the exact brand tokens from the spec; do not introduce a component library or state library.
 - Use server components unless browser state or an event handler is required.
@@ -39,41 +40,40 @@
 - Move locally and ignore: `docs/design/Home.{png,svg}`, `docs/design/Login.{png,svg}`, `docs/design/Register.{png,svg}`, `docs/design/404 Not Found.{png,svg}`
 - Rename under `public/assets/`: all runtime images listed in the spec
 - Delete: `public/file.svg`, `public/globe.svg`, `public/next.svg`, `public/vercel.svg`, `public/window.svg`
+- External: Public GitHub repository and `origin` remote
 
 **Interfaces:**
 - Consumes: Current untracked Figma exports and starter assets.
 - Produces: Stable kebab-case runtime asset paths and project rules used by every later task.
 
-- [ ] **Step 1: Run the asset check and record the expected failure**
-
-Run: `find public -type f | sort && git status --short`
-
-Expected: Full-page references, filenames with spaces, and deleted starter SVGs are still visible in working-tree status.
-
-- [ ] **Step 2: Move design-only references out of `public/`**
+- [ ] **Step 1: Move design-only references out of `public/`**
 
 Move all full-page PNG/SVG exports to `docs/design/`. Add `/docs/design/*.png` and `/docs/design/*.svg` to `.gitignore`, leaving `docs/design/README.md` tracked with the Figma URL and a note that local files are implementation references only.
 
-- [ ] **Step 3: Rename every runtime asset exactly as mapped by the spec**
+- [ ] **Step 2: Rename every runtime asset exactly as mapped by the spec**
 
 Use `student-male.png`, `student-female.png`, the six descriptive hero-decoration names, the two ByteSpace logo names, and the six explicit course-image names. Preserve file contents.
 
-- [ ] **Step 4: Add concise project instructions to `AGENTS.md` outside the managed Next.js markers**
+- [ ] **Step 3: Add concise project instructions to `AGENTS.md` outside the managed Next.js markers**
 
 Record the Figma/spec source of truth, phase order, dependency limits, server-component default, verification commands, and deployment-at-end rule.
 
-- [ ] **Step 5: Verify the asset boundary**
+- [ ] **Step 4: Verify the asset boundary**
 
 Run: `find public -type f | sort && git check-ignore docs/design/Home.png docs/design/Home.svg`
 
 Expected: No public filename contains spaces; no full-page reference is public; both reference files report as ignored.
 
-- [ ] **Step 6: Commit the asset-only change**
+- [ ] **Step 5: Commit the asset-only change**
 
 ```bash
 git add .gitignore AGENTS.md docs/design/README.md public
 git commit -m "chore: organize landing page assets"
 ```
+
+- [ ] **Step 6: Create and back up the public GitHub repository**
+
+Authenticate `gh`, create the public `bytespace-new` repository with this directory as its source, add `origin`, then push both `main` and `feat/landing-page`. The user will connect this repository to Vercel.
 
 ### Task 2: Build the Responsive Hero
 
@@ -125,7 +125,7 @@ Use semantic navigation, static desktop Sign In/Join Us text, and a menu button 
 
 - [ ] **Step 6: Implement `Hero` and `PartnerStrip`**
 
-Use the exact Figma copy, a `<form role="search" action="/" method="get">` with a labelled `q` input, `next/image` for exported assets, CSS/inline SVG for the torus and partner marks, and decorative `alt=""`/`aria-hidden` treatment. Extract the seven stacked hero avatars from the embedded raster images in local `Home.svg` into the specified runtime paths.
+Transcribe the exact hero copy from `Home.png`. Use a `<form role="search" action="/" method="get">` with a labelled `q` input, `next/image` for exported assets, CSS/inline SVG for the torus and partner marks, and decorative `alt=""`/`aria-hidden` treatment. Use `Home.svg` only for measurements and embedded raster extraction; extract its seven stacked hero avatars into the specified runtime paths.
 
 - [ ] **Step 7: Compose the Phase 1 page**
 
@@ -166,7 +166,7 @@ Define the Figma copy and card metadata with `satisfies readonly Course[]`. Keep
 
 - [ ] **Step 2: Implement the reusable course card**
 
-Use `next/image`, semantic headings, visible rating text, price text, lesson/duration/comment metadata, and the stacked-avatar treatment without adding interaction.
+Use `next/image`, semantic headings, visible rating text, price text, lesson/duration/comment metadata, and reuse `hero-avatar-0*.png` for the stacked-avatar treatment without adding interaction.
 
 - [ ] **Step 3: Implement and compose `Discover`**
 
@@ -245,7 +245,7 @@ git commit -m "feat: complete landing page sections"
 
 **Interfaces:**
 - Consumes: Verified complete page and final Git history.
-- Produces: Public GitHub repository, landing-page pull request, reviewer documentation, and public Vercel URL.
+- Produces: Landing-page pull request, reviewer documentation, merged `main`, and a public Vercel production URL.
 
 - [ ] **Step 1: Capture the final desktop screenshot**
 
@@ -268,13 +268,13 @@ git add README.md docs/screenshots/landing-page.png
 git commit -m "docs: add assessment handoff"
 ```
 
-- [ ] **Step 5: Authenticate GitHub and publish the repository**
+- [ ] **Step 5: Open and merge the landing-page pull request**
 
-Re-authenticate `gh`, create or connect the public repository, push `main` and `feat/landing-page`, then open one pull request into `main` containing the phase commits and screenshot.
+Push the completed feature branch, open one pull request into `main` containing the phase commits and screenshot, review it, then merge it so the branching workflow remains visible in GitHub history.
 
 - [ ] **Step 6: Deploy after the landing page is complete**
 
-Import the public GitHub repository into Vercel, deploy the PR/main target chosen for submission, and verify the production URL in a signed-out browser at desktop and mobile widths.
+After the user connects the repository to Vercel, deploy merged `main` as production. Do not submit a protected preview URL. Verify the production URL in a signed-out browser at desktop and mobile widths.
 
 - [ ] **Step 7: Finalize the handoff**
 
