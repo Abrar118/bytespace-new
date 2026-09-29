@@ -1,9 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { ComponentProps, ReactNode } from "react";
+import { CourseCard } from "@/components/landing/course-card";
+import { HappyStudentsCard } from "@/components/landing/stat-cards";
 import { courses } from "@/data/courses";
-import { CourseCard } from "../landing/course-card";
-import { HappyStudentsCard } from "../landing/stat-cards";
 
 // Shapes in the showcase, as Figma px relative to its top-left (122, 305).
 const shapes = [
@@ -54,7 +54,6 @@ export function AuthShell({
               alt="ByteSpace"
               width={29}
               height={31.5}
-              priority
             />
           </Link>
           <p className="mt-[44px] font-heading text-xl font-medium leading-[1.5] tracking-[-0.01em]">
@@ -84,6 +83,7 @@ export function AuthShell({
                 alt=""
                 width={w}
                 height={h}
+                sizes={`${width}px`}
                 className="absolute h-auto max-w-none"
                 style={{ top, left, width }}
               />

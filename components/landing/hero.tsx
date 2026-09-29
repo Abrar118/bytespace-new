@@ -129,7 +129,8 @@ export function Hero() {
             width={2888}
             height={2060}
             className="absolute top-0 left-[265px] h-auto w-[722px] max-w-none"
-            priority
+            preload
+            sizes="722px"
           />
           <TopicCard />
           <LearningProgressCard className="top-[141px] left-[697px] h-[131px]" />
