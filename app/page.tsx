@@ -1,4 +1,5 @@
 import { Discover } from "@/components/landing/discover";
+import { FeatureHighlights } from "@/components/landing/feature-highlights";
 import { Header } from "@/components/landing/header";
 import { Hero } from "@/components/landing/hero";
 import { LearningPaths } from "@/components/landing/learning-paths";
@@ -14,6 +15,7 @@ export default function Home() {
       <PartnerStrip />
       <Discover />
       <LearningPaths />
+      <FeatureHighlights />
     </main>
   );
 }

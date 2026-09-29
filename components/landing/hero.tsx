@@ -1,11 +1,6 @@
-import { Search, Star } from "lucide-react";
+import { Search } from "lucide-react";
 import Image from "next/image";
-
-const avatarPaths = Array.from(
-  { length: 7 },
-  (_, index) =>
-    `/assets/avatars/hero-avatar-${String(index + 1).padStart(2, "0")}.png`,
-);
+import { HappyStudentsCard, LearningProgressCard } from "./stat-cards";
 
 // Positions are Figma px inside the 1440px hero frame, minus the 104px header.
 // Exports are 4x renders with rotation baked in, so only width is needed.
@@ -65,56 +60,11 @@ const decorations = [
   },
 ];
 
-function LearningProgressCard() {
-  return (
-    <div className="absolute top-[141px] left-[697px] h-[131px] w-[232px] rounded-2xl bg-white p-4 text-ink shadow-xl">
-      <p className="text-sm font-medium">Learning Progress</p>
-      <p className="mt-2 font-heading text-[44px] font-semibold leading-none">
-        55%
-      </p>
-      <div className="mt-4 h-2 overflow-hidden rounded-full bg-surface">
-        <div className="h-full w-[56%] rounded-full bg-brand-lime" />
-      </div>
-    </div>
-  );
-}
-
-function CourseCard() {
+function TopicCard() {
   return (
     <div className="absolute top-[129px] left-[259px] flex h-[70px] w-[208px] flex-col justify-center rounded-2xl bg-white px-4 text-ink shadow-xl">
       <p className="text-base font-medium">UI/UX Design</p>
       <p className="mt-1 text-xs text-muted">200 Courses • 1000+ Students</p>
-    </div>
-  );
-}
-
-function HappyStudentsCard() {
-  return (
-    <div className="absolute top-[327px] left-[183px] h-[121px] w-[258px] rounded-2xl bg-white p-4 text-ink shadow-xl">
-      <p className="text-base font-medium">Happy Students</p>
-      <div className="mt-1 flex items-center gap-1 text-xs text-muted">
-        <span>4.5 (240)</span>
-        <Star
-          aria-hidden
-          className="fill-brand-lime text-brand-lime"
-          size={14}
-        />
-      </div>
-      <div className="mt-3 flex items-center">
-        {avatarPaths.map((path) => (
-          <Image
-            key={path}
-            src={path}
-            alt=""
-            width={43}
-            height={43}
-            className="-mr-4 size-[43px] rounded-full border-2 border-white object-cover"
-          />
-        ))}
-        <span className="grid size-[43px] place-items-center rounded-full bg-brand-lime text-xs font-bold">
-          2K+
-        </span>
-      </div>
     </div>
   );
 }
@@ -180,9 +130,9 @@ export function Hero() {
             className="absolute top-0 left-[265px] h-auto w-[722px] max-w-none"
             priority
           />
-          <CourseCard />
-          <LearningProgressCard />
-          <HappyStudentsCard />
+          <TopicCard />
+          <LearningProgressCard className="top-[141px] left-[697px] h-[131px]" />
+          <HappyStudentsCard className="top-[327px] left-[183px] h-[121px]" />
         </div>
       </div>
 
