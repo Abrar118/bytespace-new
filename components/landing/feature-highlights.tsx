@@ -104,11 +104,11 @@ export function FeatureHighlights() {
                 <CourseCard course={courses[0]} />
               </div>
               <Image
-                src="/assets/student-male.png"
+                src="/assets/boy-long.png"
                 alt=""
-                width={2888}
-                height={2060}
-                className="absolute top-[10px] left-0 h-auto w-[722px] max-w-none"
+                width={2812}
+                height={2752}
+                className="absolute top-[9.5px] left-[-0.5px] h-auto w-[703px] max-w-none"
               />
               <LearningProgressCard className="top-[213px] left-[366px] h-[138px]" />
               <Image
