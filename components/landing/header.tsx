@@ -42,7 +42,9 @@ export function Header() {
         <Link className="transition-opacity hover:opacity-70" href="/login">
           Sign In
         </Link>
-        <span>Join Us</span>
+        <Link className="transition-opacity hover:opacity-70" href="/signup">
+          Join Us
+        </Link>
         <ShoppingBag aria-hidden size={19} strokeWidth={1.8} />
       </div>
 

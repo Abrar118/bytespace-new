@@ -47,7 +47,7 @@ export function AuthShell({
   return (
     <main className="grid-backdrop min-h-screen px-5 md:px-8 xl:px-0">
       <div className="mx-auto max-w-[1200px] pt-[35px] pb-[120px] lg:flex lg:justify-between lg:gap-10">
-        <div className="text-white lg:pl-0.5">
+        <div className="text-white lg:pl-0.5 xl:relative">
           <Link href="/" aria-label="ByteSpace home" className="inline-block">
             <Image
               src="/assets/bytespace-mark.png"
@@ -64,8 +64,9 @@ export function AuthShell({
             {description}
           </p>
 
-          {/* ponytail: fixed-px composition, shrunk with zoom on lg. */}
-          <div className="relative mt-[86px] hidden h-[558px] w-[484px] lg:block lg:[zoom:0.7] xl:[zoom:1]">
+          {/* ponytail: fixed-px composition, shrunk with zoom on lg; pinned to the
+              Figma top on xl so description length does not move it. */}
+          <div className="relative mt-[86px] hidden h-[558px] w-[484px] lg:block lg:[zoom:0.7] xl:absolute xl:top-[270px] xl:left-0.5 xl:mt-0 xl:[zoom:1]">
             <div className="absolute top-[89px] left-0 w-[373px]">
               <CourseCard course={courses[1]} />
             </div>
@@ -95,6 +96,17 @@ export function AuthShell({
         </div>
       </div>
     </main>
+  );
+}
+
+export function AuthSubmit({ children }: { children: ReactNode }) {
+  return (
+    <button
+      type="submit"
+      className="mt-1 h-[46px] self-end rounded-full bg-brand-lime px-[25px] text-lg transition-transform hover:scale-105"
+    >
+      {children}
+    </button>
   );
 }
 

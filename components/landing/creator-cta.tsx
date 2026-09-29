@@ -1,3 +1,4 @@
+import Link from "next/link";
 import {
   type Decoration,
   Decorations,
@@ -85,10 +86,12 @@ export function CreatorCta() {
           and showcase your expertise by publishing your finest course on the
           ByteSpace Course Library.
         </p>
-        {/* Non-interactive until a signup route exists, like the header actions. */}
-        <span className="mt-8 inline-grid h-[46px] w-[172px] place-items-center rounded-full bg-brand-lime text-lg text-ink lg:mt-[41px]">
+        <Link
+          href="/signup"
+          className="mt-8 inline-grid h-[46px] w-[172px] place-items-center rounded-full bg-brand-lime text-lg text-ink transition-transform hover:scale-105 lg:mt-[41px]"
+        >
           Join as Creator
-        </span>
+        </Link>
       </div>
     </section>
   );

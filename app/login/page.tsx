@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { AuthForm } from "@/components/auth/auth-form";
-import { AuthField, AuthShell } from "@/components/auth/auth-shell";
+import { AuthField, AuthShell, AuthSubmit } from "@/components/auth/auth-shell";
 
 export const metadata: Metadata = {
   title: "Sign In — ByteSpace",
@@ -35,12 +35,7 @@ export default function LoginPage() {
           autoComplete="current-password"
           placeholder="********"
         />
-        <button
-          type="submit"
-          className="mt-1 h-[46px] self-end rounded-full bg-brand-lime px-[25px] text-lg transition-transform hover:scale-105"
-        >
-          Sign In
-        </button>
+        <AuthSubmit>Sign In</AuthSubmit>
       </AuthForm>
 
       <div className="mt-[73px] flex items-center gap-3 text-lg lg:pr-[13px] text-muted">

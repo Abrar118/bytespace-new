@@ -63,9 +63,12 @@ export function MobileNavigation({
             <Link className="px-4 py-2" href="/login">
               Sign In
             </Link>
-            <span className="rounded-full bg-brand-lime px-5 py-2 font-semibold text-ink">
+            <Link
+              className="rounded-full bg-brand-lime px-5 py-2 font-semibold text-ink"
+              href="/signup"
+            >
               Join Us
-            </span>
+            </Link>
           </div>
         </nav>
       )}
