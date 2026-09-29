@@ -1,6 +1,7 @@
 "use client";
 
 import { Menu, X } from "lucide-react";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export type NavigationItem = {
@@ -59,7 +60,9 @@ export function MobileNavigation({
             ))}
           </ul>
           <div className="mt-3 flex items-center justify-between border-t border-border pt-3">
-            <span className="px-4 py-2">Sign In</span>
+            <Link className="px-4 py-2" href="/login">
+              Sign In
+            </Link>
             <span className="rounded-full bg-brand-lime px-5 py-2 font-semibold text-ink">
               Join Us
             </span>
